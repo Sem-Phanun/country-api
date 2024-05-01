@@ -44,17 +44,36 @@
                         <img :src="item.flags.png" class="w-full h-full" alt="Flag">
                     </div>
                     <div class="ml-4">
-                        <h5 class="text-xl font-semibold text-blue-gray-900 cursor-pointer">{{ item.name.official }}</h5>
-                        <p class="text-sm text-gray-700">cca2: {{ item.cca2 }}</p>
-                        <p class="text-sm text-gray-700">cca3: {{ item.cca3 }}</p>
+                        <span class="uppercase font-bold">official name: </span>
+                        <span class="text-2xl font-semibold text-blue-gray-900 cursor-pointer">{{ item.name.official }}</span>
+                        <div>
+                            
+                            <li class="text-sm text-gray-700"> 
+                                <span class="uppercase font-bold">cca2: </span>
+                                {{ item.cca2 }}
+                            </li>
+                            
+                            <li class="text-sm text-gray-700">
+                                <span class="uppercase font-bold">cca3: </span>
+                                {{ item.cca3 }}
+                            </li>
+                        </div>
                         <ul>
                             <li v-for="(nativename, nativenameKey) in item.name.nativeName" :key="nativenameKey"
                                 class="text-sm text-gray-700">
-                                {{ nativenameKey }}:
-                                <span v-for="(name, index) in nativename" :key="index">
-                                    {{ name }}
-                                </span>
+                                <span class="uppercase font-bold">{{ nativenameKey }}: </span>
+                                <li v-for="(name, index) in nativename" :key="index"
+                                    class="px-8"
+                                >
+                                 {{ index }}: {{ name }}
+                                </li>
                             </li>
+                        </ul>
+                        <ul>
+                            <span class="uppercase font-bold">alt: </span> 
+                            <li v-for="(alt, index) in item.altSpellings" :key="index"
+                                class="px-8"
+                            > {{ alt}}</li>
                         </ul>
                         <p class="text-sm text-gray-700">
                             <span>Root:</span> {{ item.idd.root }}
